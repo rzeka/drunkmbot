@@ -8,9 +8,10 @@ import (
 type CommandCallable func(args string, s *discordgo.Session, m *discordgo.MessageCreate)
 
 type command struct {
-	trigger string
+	trigger  string
 	callable CommandCallable
 }
+
 var commands []command
 
 func (bot *Bot) AddCommand(trigger string, callable CommandCallable) {
@@ -33,7 +34,7 @@ func (bot *Bot) initCommands() {
 
 		for _, command := range commands {
 			if strings.HasPrefix(m.Content, command.trigger) {
-				command.callable(m.Content[len(command.trigger) + 1:], s, m)
+				command.callable(m.Content[len(command.trigger)+1:], s, m)
 			}
 		}
 	}

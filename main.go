@@ -4,10 +4,10 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"log"
 	"os"
-			)
+)
 
 type Bot struct {
-	Discord *discordgo.Session
+	Discord       *discordgo.Session
 	CommandPrefix string
 }
 
@@ -20,7 +20,7 @@ func New(token string) Bot {
 	}
 
 	return Bot{
-		Discord: discord,
+		Discord:       discord,
 		CommandPrefix: "!",
 	}
 }

@@ -1,13 +1,13 @@
 package main
 
 import (
-	"net/http"
-	"time"
-	"io/ioutil"
 	"encoding/json"
-	"github.com/bwmarrin/discordgo"
-	"strings"
 	"fmt"
+	"github.com/bwmarrin/discordgo"
+	"io/ioutil"
+	"net/http"
+	"strings"
+	"time"
 )
 
 type Response struct {
@@ -15,17 +15,17 @@ type Response struct {
 }
 
 type PlayerRating struct {
-	Rating int `json:"rating"`
-	Deviation int `json:"deviation"`
+	Rating     int `json:"rating"`
+	Deviation  int `json:"deviation"`
 	LastChange int `json:"lastChange"`
 }
 
 type Rank struct {
-	Name string
+	Name   string
 	Rating int
 }
 
-var Ranks = []Rank {
+var Ranks = []Rank{
 	{"Bronze 1", 0},
 	{"Bronze 2", 675},
 	{"Bronze 3", 750},
@@ -56,8 +56,8 @@ var Ranks = []Rank {
 func commandRank(args string, s *discordgo.Session, m *discordgo.MessageCreate) {
 	name := strings.Trim(args, " ")
 
-	if strings.HasPrefix(name,"\"") && strings.HasSuffix(name, "\"") {
-		name = name[1:len(name) - 1]
+	if strings.HasPrefix(name, "\"") && strings.HasSuffix(name, "\"") {
+		name = name[1 : len(name)-1]
 	}
 
 	ratings, err := apiGetPlayerRatings(name)
@@ -99,7 +99,7 @@ func apiGetPlayerRatings(name string) (Response, error) {
 
 	req, err := http.NewRequest(
 		http.MethodGet,
-		"https://stats.quake.com/api/v2/Player/Stats?name=" + name,
+		"https://stats.quake.com/api/v2/Player/Stats?name="+name,
 		nil,
 	)
 	if err != nil {
@@ -127,7 +127,7 @@ func apiGetPlayerRatings(name string) (Response, error) {
 func getRankNameFromRating(rating int) string {
 	var rankName = Ranks[0].Name
 
-	for _,rank := range Ranks {
+	for _, rank := range Ranks {
 		if rating < rank.Rating {
 			break
 		}

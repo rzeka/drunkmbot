@@ -6,8 +6,8 @@ import (
 	"syscall"
 
 	"github.com/joho/godotenv"
-	"log"
 	"github.com/rzeka/drunkmbot"
+	"log"
 )
 
 var (

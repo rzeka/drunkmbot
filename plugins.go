@@ -1,9 +1,9 @@
 package drunkmbot
 
 import (
-	"path/filepath"
 	"log"
 	"os"
+	"path/filepath"
 	"plugin"
 	"strings"
 )
@@ -17,7 +17,7 @@ func (bot *Bot) LoadPlugins(path string) {
 		os.Exit(1)
 	}
 
-	for _,file := range files {
+	for _, file := range files {
 		p, err := plugin.Open(file)
 
 		if err != nil {

@@ -4,6 +4,6 @@ import (
 	"github.com/rzeka/drunkmbot"
 )
 
-func LoadPlugin(bot drunkmbot.Bot) {
+func LoadPlugin(bot *drunkmbot.Bot) {
 	bot.AddCommand("rank", commandRank)
 }

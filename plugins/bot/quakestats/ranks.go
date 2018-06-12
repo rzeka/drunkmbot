@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
-)
+	)
 
 type Response struct {
 	PlayerRatings map[string]PlayerRating `json:"playerRatings"`

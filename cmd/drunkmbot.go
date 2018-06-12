@@ -8,7 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/rzeka/drunkmbot"
 	"log"
-)
+	)
 
 var (
 	token string

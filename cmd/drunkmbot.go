@@ -12,16 +12,25 @@ import (
 
 var (
 	token string
+	commandPrefix string
 )
 
 func init() {
 	godotenv.Load(".env") //don't care about errors here
 
 	token = os.Getenv("BOT_TOKEN")
+
+	prefix := os.Getenv("COMMAND_PREFIX")
+	if prefix == "" {
+		prefix = "!"
+	}
+
+	commandPrefix = prefix
 }
 
 func main() {
 	discord := drunkmbot.New(token)
+	discord.CommandPrefix = commandPrefix
 
 	discord.LoadPlugins("plugins/bot")
 	discord.Start()

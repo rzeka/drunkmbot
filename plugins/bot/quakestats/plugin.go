@@ -5,5 +5,6 @@ import (
 )
 
 func LoadPlugin(bot *drunkmbot.Bot) {
-	bot.AddCommand("rank", commandRank)
+	bot.AddCommand("rank", 0, commandRank)
+	bot.AddCommand("ranks", 0, commandRanks)
 }

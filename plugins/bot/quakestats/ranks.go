@@ -90,6 +90,20 @@ func commandRank(args string, s *discordgo.Session, m *discordgo.MessageCreate) 
 	s.ChannelMessageSend(m.ChannelID, message)
 }
 
+func commandRanks(_ string, s *discordgo.Session, m *discordgo.MessageCreate) {
+	message := ""
+
+	for i, rank := range Ranks {
+		if i%5 == 0 {
+			message = message + "\n"
+		}
+
+		message = message + fmt.Sprintf("**%v**: %d\n", rank.Name, rank.Rating)
+	}
+
+	s.ChannelMessageSend(m.ChannelID, message)
+}
+
 func apiGetPlayerRatings(name string) (Response, error) {
 	var response = Response{}
 
